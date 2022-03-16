@@ -8,7 +8,7 @@ try:
 except ImportError:
     print("ROOT is required by this library.")
 
-DEPS = ['numpy', 'PyYAML>4.*', 'future', 'pylint']
+DEPS = ['numpy', 'PyYAML>4.*', 'future', 'six', 'pylint==2.9.6']
 
 HERE = path.abspath(path.dirname(__file__))
 
@@ -17,7 +17,7 @@ with codecs.open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='hepdata_lib',
-    version='0.7.0',
+    version='0.8.1',
     description='Library for getting your data into HEPData',
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
