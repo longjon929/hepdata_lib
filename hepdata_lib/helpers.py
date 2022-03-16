@@ -136,6 +136,27 @@ def round_value_to_decimals(cont, key="y", decimals=3):
         else:
             cont[key][i] = round(val, decimals)
 
+def round_value_to_rel_decimals(cont, key="y", decimals=3):
+    """
+    round all values in a dictionary to some decimals in one go
+    default round to 3 digits after period
+    possible use case: correlations where typical values are within -1,1
+
+    : param cont : dictionary as returned e.g. by RootFileReader::read_hist_1d()
+    : type  cont : dictionary
+
+    : param decimals: how many decimals for the rounding
+    : type  decimals: integer
+    """
+
+    decimals = int(decimals)
+
+    for i, val in enumerate(cont[key]):
+        if isinstance(val, tuple):
+            cont[key][i] = (relative_round(val[0], decimals), relative_round(val[1], decimals))
+        else:
+            cont[key][i] = relative_round(val, decimals)
+
 
 def round_value_and_uncertainty_to_decimals(cont, val_key="y", unc_key="dy", decimals=3):
     """
